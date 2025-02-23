@@ -34,10 +34,10 @@ const { isAuthenticated, logout } = useAuth();
   // Updated navigation fields from the second snippet
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Timeline', path: '/timeline' },
+    { name: 'Dashboard', path: '/dashboard' },
     { name: 'Create', path: '/create' },
+    { name: 'Timeline', path: '/timeline' },
     { name: 'About', path: '/about' },
-    { name: 'Gallery', path: '/gallery' }
   ];
 
 const handleLogout = () => {

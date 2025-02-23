@@ -14,6 +14,7 @@ import About from "@/pages/about";
 import Gallery from "@/pages/gallery";
 import AuthPage from "@/pages/auth-page";
 import { CapsuleProvider } from './hooks/CapsuleContext';
+import CapsuleDetail from "./pages/CapsuleDetail"
 
 
 function Router() {
@@ -22,8 +23,9 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/timeline" component={Timeline} />
       <Route path="/create" component={Create} />
+      <Route path="/capsule/:id" component={CapsuleDetail} />
       <Route path="/about" component={About} />
-      <Route path="/gallery" component={Gallery} />
+      <Route path="/dashboard" component={Gallery} />
       <Route path="/auth" component={AuthPage} />
       <Route component={NotFound} />
     </Switch>
