@@ -17,8 +17,10 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from timecapsule import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('api/user/', include('account.urls'))
+    path('api/user/', include('account.urls')),
+    path('api/timecapsule/create/', views.TimeCapsuleCreateView.as_view(), name='create-capsule'),
 ]
