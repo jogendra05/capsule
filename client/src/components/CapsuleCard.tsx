@@ -2,6 +2,8 @@ import React from 'react';
 import { Lock, Unlock, Calendar, Share2 } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { Capsule } from '../types';
+import { Link } from "react-router-dom";
+import { MessageSquarePlus } from "lucide-react";
 
 interface CapsuleCardProps {
   capsule: Capsule;
@@ -15,11 +17,19 @@ const CapsuleCard: React.FC<CapsuleCardProps> = ({ capsule }) => {
       <div className="flex items-start justify-between mb-3">
         <h3 className="font-semibold text-lg text-gray-900">{capsule.title}</h3>
         <div className="flex items-center gap-2">
-          {capsule.isShared && (
-            <span className="text-blue-600">
-              <Share2 className="w-4 h-4" />
-            </span>
+          {capsule.isShared ? (
+            <span className="text-sm text-gray-500">Shared</span>
+          ) : (
+            <Link 
+              to="/share"
+              state={{ capsuleTitle: capsule.title, capsuledate: capsule.unlockDate }}
+              className="flex items-center gap-1 text-sm font-medium text-indigo-600 hover:text-indigo-500 transition-colors"
+            >
+              <MessageSquarePlus className="w-4 h-4" />
+              Invite
+            </Link>
           )}
+          
           {capsule.isLocked ? (
             <span className="text-amber-500">
               <Lock className="w-4 h-4" />
