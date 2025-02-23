@@ -13,7 +13,7 @@ const MOCK_CAPSULES: Capsule[] = [
     unlockDate: new Date('2024-12-25'),
     isLocked: true,
     mediaUrl: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80',
-    isShared: false,
+    isShared: false, 
     createdAt: new Date('2024-03-01'),
     createdBy: 'user1'
   },
@@ -24,7 +24,7 @@ const MOCK_CAPSULES: Capsule[] = [
     unlockDate: new Date('2024-06-01'),
     isLocked: true,
     mediaUrl: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80',
-    isShared: true,
+    isShared: false,
     createdAt: new Date('2023-09-15'),
     createdBy: 'user1'
   }
