@@ -1,6 +1,61 @@
 
+// import React from 'react'
+// import { Switch, Route } from "wouter";
+// import { queryClient } from "./lib/queryClient";
+// import { QueryClientProvider } from "@tanstack/react-query";
+// import { Toaster } from "@/components/ui/toaster";
+// import { Navbar } from "@/components/navbar.tsx";
+// import { AuthProvider } from "@/hooks/use-auth";
+// import NotFound from "@/pages/not-found";
+// import Home from "@/pages/home";
+// import Timeline from "@/pages/timeline";
+// import Create from "@/pages/createCapsule";
+// import About from "@/pages/about";
+// import Gallery from "@/pages/gallery";
+// import AuthPage from "@/pages/auth-page";
+// import { CapsuleProvider } from './hooks/CapsuleContext';
+// import CapsuleDetail from "./pages/CapsuleDetail"
+
+
+// function Router() {
+//   return (
+//     <Switch>
+//       <Route path="/" component={Home} />
+//       <Route path="/timeline" component={Timeline} />
+//       <Route path="/create" component={Create} />
+//       <Route path="/capsule/:id" component={CapsuleDetail} />
+//       <Route path="/about" component={About} />
+//       <Route path="/dashboard" component={Gallery} />
+//       <Route path="/auth" component={AuthPage} />
+//       <Route component={NotFound} />
+//     </Switch>
+//   );
+// }
+
+// function App() {
+//   return (
+//     <QueryClientProvider client={queryClient}>
+//       <AuthProvider>
+//       <CapsuleProvider>
+//         <div className="min-h-screen flex flex-col">
+//           <div className='pb-10'>
+
+//           <Navbar />
+//           </div>
+//           <Router />
+//         </div>
+//         </CapsuleProvider>
+//       </AuthProvider>
+//       <Toaster />
+//     </QueryClientProvider>
+//   );
+// }
+
+// export default App;
+
+// Added by yatharth at 6:24 dekh lena agar upar ke code may kuch change hoga tho mene dekha nahi hai 
 import React from 'react'
-import { Switch, Route } from "wouter";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom' // Changed from wouter
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -12,38 +67,35 @@ import Timeline from "@/pages/timeline";
 import Create from "@/pages/createCapsule";
 import About from "@/pages/about";
 import Gallery from "@/pages/gallery";
+import ShareForm from '@/components/ShareForm';
 import AuthPage from "@/pages/auth-page";
 import { CapsuleProvider } from './hooks/CapsuleContext';
 import CapsuleDetail from "./pages/CapsuleDetail"
 
 
-function Router() {
-  return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/timeline" component={Timeline} />
-      <Route path="/create" component={Create} />
-      <Route path="/capsule/:id" component={CapsuleDetail} />
-      <Route path="/about" component={About} />
-      <Route path="/dashboard" component={Gallery} />
-      <Route path="/auth" component={AuthPage} />
-      <Route component={NotFound} />
-    </Switch>
-  );
-}
-
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-      <CapsuleProvider>
-        <div className="min-h-screen flex flex-col">
-          <div className='pb-10'>
-
-          <Navbar />
-          </div>
-          <Router />
-        </div>
+        <CapsuleProvider>
+          <Router> {/* Add BrowserRouter here */}
+            <div className="min-h-screen flex flex-col">
+              <div className='pb-10'>
+                <Navbar />
+              </div>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/timeline" element={<Timeline />} />
+                <Route path="/create" element={<Create />} />
+                <Route path="/capsule/:id" element={<CapsuleDetail />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/dashboard" element={<Gallery />} />
+                <Route path="/share" element={<ShareForm />} />
+                <Route path="/auth" element={<AuthPage />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </div>
+          </Router>
         </CapsuleProvider>
       </AuthProvider>
       <Toaster />
@@ -52,8 +104,6 @@ function App() {
 }
 
 export default App;
-
-
 
 // import React, { useState } from "react";
 // import axios from "axios";
